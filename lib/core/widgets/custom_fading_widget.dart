@@ -16,7 +16,8 @@ class _CustomFadingWidgetState extends State<CustomFadingWidget>
 
   @override
   void initState() {
-    animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 800));
+    animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 800));
 
     animation = Tween(begin: 0.2, end: .8).animate(animationController);
 
@@ -26,6 +27,12 @@ class _CustomFadingWidgetState extends State<CustomFadingWidget>
 
     animationController.repeat(reverse: true);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override
