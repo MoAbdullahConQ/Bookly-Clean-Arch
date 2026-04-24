@@ -1,6 +1,5 @@
 import 'package:bookly/Features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
-
 import 'newest_books_list_view_item.dart';
 
 class NewestBooksListView extends StatelessWidget {
@@ -10,22 +9,26 @@ class NewestBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.zero,
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: BookListViewItem(
-            image: books[index].bookImage ?? '',
-            title: books[index].bookTitle,
-            authorName: books[index].authorName ?? 'No Name',
-            price: books[index].bookPrice ?? 0,
-            raring: books[index].bookRating ?? 0,
-          ),
-        );
-      },
+    return SizedBox(
+      height: books.length * 145,
+      child: ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
+        itemCount: books.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: BookListViewItem(
+              title: books[index].bookTitle,
+              image: books[index].bookImage ?? '',
+              authorName: books[index].authorName ?? 'No Name',
+              price: books[index].bookPrice ?? 0,
+              raring: books[index].bookRating ?? 0,
+            ),
+          );
+        },
+      ),
     );
   }
 }
