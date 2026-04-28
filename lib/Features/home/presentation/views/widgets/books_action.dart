@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/custom_button.dart';
 
 class BooksAction extends StatelessWidget {
-  const BooksAction({super.key});
+  const BooksAction({super.key, required this.price});
+
+  final num price;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
-        children: const [
+        children: [
           Expanded(
               child: CustomButton(
-            text: '19.99€',
+            text: '${price.toStringAsFixed(2)}€',
             backgroundColor: Colors.white,
             textColor: Colors.black,
             borderRadius: BorderRadius.only(

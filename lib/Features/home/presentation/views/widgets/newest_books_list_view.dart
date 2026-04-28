@@ -20,11 +20,7 @@ class NewestBooksListView extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
             child: BookListViewItem(
-              title: books[index].bookTitle,
-              image: books[index].bookImage ?? '',
-              authorName: books[index].authorName ?? 'No Name',
-              price: books[index].bookPrice ?? 0,
-              raring: books[index].bookRating ?? 0,
+              bookEntity: books[index],
             ),
           );
         },
