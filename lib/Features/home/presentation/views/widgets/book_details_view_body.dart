@@ -23,7 +23,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 CustomBookDetailsAppBar(),
                 BookDetailsSection(bookEntity: bookEntity),
                 Expanded(child: SizedBox(height: 50)),
-                SimilarBooksSection(),
+                SimilarBooksSection(bookEntity: bookEntity),
                 SizedBox(height: 40),
               ],
             ),
