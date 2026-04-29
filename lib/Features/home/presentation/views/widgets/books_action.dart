@@ -1,5 +1,5 @@
+import 'package:bookly/core/utils/functions/launch_url.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 
@@ -27,14 +27,11 @@ class BooksAction extends StatelessWidget {
           )),
           Expanded(
               child: CustomButton(
-            onPressed: () async {
-              Uri uri = Uri.parse(url);
-              if (await canLaunchUrl(uri)) {
-                await launchUrl(uri);
-              }
+            onPressed: () {
+              launchCustomURL(context, url);
             },
             fontSize: 16,
-            text: 'Free Preview',
+            text: url.isEmpty ? 'Not Available' : 'Free Preview',
             backgroundColor: Color(0xffEF8262),
             textColor: Colors.white,
             borderRadius: BorderRadius.only(
