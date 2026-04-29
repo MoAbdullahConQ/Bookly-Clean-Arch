@@ -10,10 +10,13 @@ import 'package:bookly/core/utils/functions/setup_service_locator.dart';
 import 'package:bookly/core/utils/simple_bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart'; // ← replace hive/hive.dart
 
 Future<void> main() async {
+  await dotenv.load(fileName: '.env');
+
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
 
