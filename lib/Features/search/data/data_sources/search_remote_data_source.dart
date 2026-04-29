@@ -13,7 +13,7 @@ class SearchRemoteDataSourceImpl extends SearchRemoteDataSource {
 
   @override
   Future<List<BookEntity>> searchForBooks({required String query}) async {
-    var data = await apiService.get(endpoint: 'volumes?q=$query');
+    var data = await apiService.get(endpoint: 'volumes?q=$query&maxResults=20');
     List<BookEntity> books = getBooksList(data);
     return books;
   }
