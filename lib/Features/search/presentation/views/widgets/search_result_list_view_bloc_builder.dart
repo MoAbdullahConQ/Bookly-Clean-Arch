@@ -1,5 +1,6 @@
 import 'package:bookly/Features/search/presentation/manager/search_books_cubit/search_books_cubit.dart';
 import 'package:bookly/Features/search/presentation/views/widgets/search_result_list_view.dart';
+import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,9 +12,10 @@ class SearchResultListViewBlocBuilder extends StatelessWidget {
     return BlocBuilder<SearchBooksCubit, SearchBooksState>(
       builder: (context, state) {
         if (state is SearchBooksSuccess) {
-          return SearchResultListView(
-            books: state.books,
-          );
+          if (state.books.isEmpty) {
+            return const Center(child: Text('No Results Found',style: Styles.textStyle16,));
+          }
+          return SearchResultListView(books: state.books);
         } else if (state is SearchBooksFailure) {
           return Center(child: Text(state.errorMessage));
         } else if (state is SearchBooksLoading) {
