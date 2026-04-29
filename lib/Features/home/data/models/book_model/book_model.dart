@@ -30,7 +30,9 @@ class BookModel extends BookEntity {
             bookImage: volumeInfo.imageLinks?.thumbnail ?? '',
             authorName: volumeInfo.authors?.first ?? 'Unknown Author',
             bookPrice: 0.0,
-            bookRating: double.tryParse(volumeInfo.maturityRating ?? '0') ?? 0.0);
+            bookRating:
+                double.tryParse(volumeInfo.maturityRating ?? '0') ?? 0.0,
+            previewLink: volumeInfo.previewLink ?? '');
 
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
         kind: json['kind'] as String?,

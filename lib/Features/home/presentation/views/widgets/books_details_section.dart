@@ -20,7 +20,8 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .2),
-          child: CustomBookImage(image: bookEntity.bookImage ?? '', bookEntity: bookEntity),
+          child: CustomBookImage(
+              image: bookEntity.bookImage ?? '', bookEntity: bookEntity),
         ),
         const SizedBox(height: 43),
         Text(
@@ -48,6 +49,7 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(height: 37),
         BooksAction(
           price: bookEntity.bookPrice ?? 0,
+          url: bookEntity.previewLink ?? '',
         ),
       ],
     );

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 
 class BooksAction extends StatelessWidget {
-  const BooksAction({super.key, required this.price});
+  const BooksAction({super.key, required this.price, required this.url});
 
   final num price;
+  final String url;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,12 @@ class BooksAction extends StatelessWidget {
           )),
           Expanded(
               child: CustomButton(
+            onPressed: () async {
+              Uri uri = Uri.parse(url);
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri);
+              }
+            },
             fontSize: 16,
             text: 'Free Preview',
             backgroundColor: Color(0xffEF8262),
